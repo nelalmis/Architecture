@@ -13,6 +13,7 @@ namespace Architecture.Helper
         private static List<FileInfo> fileList;
         public static bool DllCopy()
         {
+
             try
             {
                 fileList = new List<FileInfo>();
