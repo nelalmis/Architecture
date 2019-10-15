@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Architecture.Helper
 {
+
     public class ExcelClass<T>: ObjectHelperBase
          where T : class
     {
