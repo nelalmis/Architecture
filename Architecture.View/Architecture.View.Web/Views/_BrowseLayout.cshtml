@@ -1,0 +1,75 @@
+﻿@{
+    Layout = "~/Views/_AdminLayout.cshtml";
+    WebGrid grid = new WebGrid(canPage:false);
+    grid.Bind(ViewBag.DataSource);
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @section css
+    {
+    <!-- Datatables -->
+    <link href="~/Content/template/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/template/css/buttons.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/template/css/fixedHeader.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/template/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/template/css/scroller.bootstrap.min.css" rel="stylesheet" />
+    }
+</head>
+<body>
+    
+    <div class="x_content">
+        <div class="btn-toolbar editor" data-role="editor-toolbar" data-target="#editor-one">
+            <button type="button" class="btn btn-success">Large Button</button>
+            <button type="button" class="btn btn-success">Large Button</button>
+            <button type="button" class="btn btn-success">Large Button</button>
+            <button type="button" class="btn btn-success">Large Button</button>
+            @Html.ActionLink("Kaydet","SaveExecute","Home",null,new { @class = "btn btn-success"})
+
+         </div>
+            <div class="well" style="overflow:auto;">
+                <a class="btn btn-app">
+                    <i class="fa fa-edit"></i> Edit
+                </a>
+                <a class="btn btn-app">
+                    <i class="fa fa-edit"></i> Edit
+                </a>
+                <a class="btn btn-app">
+                    <i class="fa fa-edit"></i> Edit
+                </a>
+            </div>
+            <div class="clearfix"></div>
+            @grid.GetHtml(
+             htmlAttributes: new { @id = "datatable-buttons", @class = "table table-striped table-bordered" },
+           columns: ViewBag.Columns,
+           caption: "Sonuç Listesi"
+          
+        )
+        </div>
+    
+    @RenderBody()
+
+    @section script
+    {
+    <script src="~/Content/template/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/template/js/dataTables.responsive.min.js"></script>
+    <script src="~/Content/template/js/dataTables.scroller.min.js"></script>
+    <script src="~/Content/template/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Content/template/js/dataTables.buttons.min.js"></script>
+    <script src="~/Content/template/js/dataTables.fixedHeader.min.js"></script>
+    <script src="~/Content/template/js/dataTables.keyTable.min.js"></script>
+    <script src="~/Content/template/js/buttons.print.js"></script>
+    <script src="~/Content/template/js/buttons.html5.min.js"></script>
+    <script src="~/Content/template/js/buttons.flash.min.js"></script>
+    <script src="~/Content/template/js/buttons.bootstrap.min.js"></script>
+    <script src="~/Content/template/js/responsive.bootstrap.js"></script>
+    <script src="~/Content/template/js/pdfmake.min.js"></script>
+    <script src="~/Content/template/js/vfs_fonts.js"></script>
+    <script src="~/Content/template/js/jszip.min.js"></script>
+    }
+</body>
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Update</Title>
+			<Shortcut>BusinessInsert</Shortcut>
+			<Description>Code snippet for Insert</Description>
+			<Author>Nevzat Elalmış</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>Contract</ID>
+					<ToolTip>Expression to evaluate</ToolTip>
+					<Default>Contract</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[public GenericResponse<Int32> Insert($Contract$ contract)
+        {
+            SqlCommand command;
+            GenericResponse<Int32> returnObject;
+            GenericResponse<Int32> spUpdate;
+
+            returnObject = this.InitializeGenericResponse<Int32>("");
+            command = this.DBLayer.GetDBCommand(SQLDBHelper.Databases.NORTHWND, "COR.upd_Date");
+
+            if (contract == null)
+            {
+                returnObject.Results.Add(new ArgumentNullException("contract"));
+                return returnObject;
+            }
+           
+            this.DBLayer.AddInParameter(command, "@FirstName", SqlDbType.NVarChar, contract.FirstName);
+            this.DBLayer.AddInParameter(command, "@LastName", SqlDbType.NVarChar, contract.LastName);
+            
+            spInsert = this.DBLayer.ExecuteNonQuery(command);
+
+            if (!spInsert.Success)
+            {
+                returnObject.Results.AddRange(spInsert.Results);
+                return returnObject;
+            }
+            returnObject.Value = spInsert.Value;            
+            return returnObject;
+        }
+	$end$]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

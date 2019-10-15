@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="af4c3055a389409d9a7862790f6b6107" Name="Diagram1">
+        <EntityTypeShape EntityType="ARCHITECTUREModel.Address" Width="1.5" PointX="2.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.City" Width="1.5" PointX="0.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.CompanyContact" Width="1.5" PointX="6" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.Country" Width="1.5" PointX="8.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.County" Width="1.5" PointX="2.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.Email" Width="1.5" PointX="0.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.Fax" Width="1.5" PointX="4.375" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.Phone" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.PotentialContact" Width="1.5" PointX="5.25" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.Action" Width="1.5" PointX="6" PointY="43.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.Authentication" Width="1.5" PointX="5.25" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.Company" Width="1.5" PointX="0.75" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.CompanyAuthentication" Width="1.5" PointX="9.625" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.CustomerDetail" Width="1.5" PointX="5.25" PointY="35.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.Department" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.EmployeeDetail" Width="1.5" PointX="8.625" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.Human" Width="1.5" PointX="10" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.Message" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.Parameter" Width="1.5" PointX="3" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.Potential" Width="1.5" PointX="3" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.Resource" Width="1.5" PointX="3" PointY="37.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.ResourceAction" Width="1.5" PointX="8.25" PointY="38.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.Role" Width="1.5" PointX="5.25" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.UserDetail" Width="1.5" PointX="5.25" PointY="40.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARCHITECTUREModel.ErrorCodes" Width="1.5" PointX="6.75" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_CompanyContact_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_CompanyContact_Address1" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_PotentialContact_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_PotentialContact_Address1" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_County_City" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_CompanyContact_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_CompanyContact_Email" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_CompanyContact_Fax" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_CompanyContact_Phone" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_PotentialContact_Email" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_PotentialContact_Fax" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_PotentialContact_Phone" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_PotentialContact_Potential" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_ResourceAction_Action" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_Authentication_Potential" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_CompanyAuthentication_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_Department_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_Message_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_Parameter_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_Potential_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_Resource_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_CustomerDetail_Potential" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_Employee_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_Role_Potential" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_UserDetail_Potential" ManuallyRouted="false" />
+        <AssociationConnector Association="ARCHITECTUREModel.FK_ResourceAction_Resource" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

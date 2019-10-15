@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{74DBEB18-6B49-4CB6-ABF5-D292B9657DD1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Architecture.View.Win</RootNamespace>
+    <AssemblyName>Architecture.View.Win</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="Architecture.Common.Logger">
+      <HintPath>..\..\..\..\Architecture\server\bin\Architecture.Common.Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="Architecture.Common.Types">
+      <HintPath>..\..\..\..\Architecture\server\bin\Architecture.Common.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Architecture.Proxy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Architecture\server\bin\Architecture.Proxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Architecture.View.Resource, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Architecture\server\bin\Architecture.View.Resource.dll</HintPath>
+    </Reference>
+    <Reference Include="Architecture.View.Root.BusinessHelper">
+      <HintPath>..\..\..\..\Architecture\server\bin\Architecture.View.Root.BusinessHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v16.1" />
+    <Reference Include="DevExpress.Data.v16.1" />
+    <Reference Include="DevExpress.ExpressApp.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.Web.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Mvvm.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v16.1.Core" />
+    <Reference Include="DevExpress.SpellChecker.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.TreeMap.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v16.1" />
+    <Reference Include="DevExpress.Web.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v16.1" />
+    <Reference Include="DevExpress.Sparkline.v16.1.Core" />
+    <Reference Include="DevExpress.XtraEditors.v16.1" />
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v16.1.Extensions, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpellChecker.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeMap.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0.3\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\DialogFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\DialogFormBase.Designer.cs">
+      <DependentUpon>DialogFormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\EditorBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\EditorBase.Designer.cs">
+      <DependentUpon>EditorBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\FormBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\FormBase.Designer.cs">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\UserControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\UserControlBase.Designer.cs">
+      <DependentUpon>UserControlBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\WindowBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\WindowBase.Designer.cs">
+      <DependentUpon>WindowBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommandControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CommandControl.Designer.cs">
+      <DependentUpon>CommandControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\TextEditorLabeled.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\TextEditorLabeled.Designer.cs">
+      <DependentUpon>TextEditorLabeled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CriterionsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CriterionsControl.Designer.cs">
+      <DependentUpon>CriterionsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataGridControl.Designer.cs">
+      <DependentUpon>DataGridControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\BrowseFormControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\BrowseFormControl.Designer.cs">
+      <DependentUpon>BrowseFormControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogFormControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogFormControl.Designer.cs">
+      <DependentUpon>DialogFormControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\TabFormControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\TabFormControl.Designer.cs">
+      <DependentUpon>TabFormControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\TransactionFormControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\TransactionFormControl.Designer.cs">
+      <DependentUpon>TransactionFormControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NavBarControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NavBarControl.Designer.cs">
+      <DependentUpon>NavBarControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceTree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ResourceTree.Designer.cs">
+      <DependentUpon>ResourceTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchControl.Designer.cs">
+      <DependentUpon>SearchControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StatusBarControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StatusBarControl.Designer.cs">
+      <DependentUpon>StatusBarControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Base\DialogFormBase.resx">
+      <DependentUpon>DialogFormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\EditorBase.resx">
+      <DependentUpon>EditorBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\FormBase.resx">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommandControl.resx">
+      <DependentUpon>CommandControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\TextEditorLabeled.resx">
+      <DependentUpon>TextEditorLabeled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CriterionsControl.resx">
+      <DependentUpon>CriterionsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataGridControl.resx">
+      <DependentUpon>DataGridControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\BrowseFormControl.resx">
+      <DependentUpon>BrowseFormControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\TabFormControl.resx">
+      <DependentUpon>TabFormControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\TransactionFormControl.resx">
+      <DependentUpon>TransactionFormControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NavBarControl.resx">
+      <DependentUpon>NavBarControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="ResourceTree.resx">
+      <DependentUpon>ResourceTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchControl.resx">
+      <DependentUpon>SearchControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatusBarControl.resx">
+      <DependentUpon>StatusBarControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

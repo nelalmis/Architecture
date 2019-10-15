@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{009B7232-54D7-4CFF-BE4B-C2ACD8EA82DC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Architecture.Entity</RootNamespace>
+    <AssemblyName>Architecture.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model2\Action.cs" />
+    <Compile Include="Model2\Address.cs" />
+    <Compile Include="Model2\Authentication.cs" />
+    <Compile Include="Model2\City.cs" />
+    <Compile Include="Model2\Company.cs" />
+    <Compile Include="Model2\CompanyAuthentication.cs" />
+    <Compile Include="Model2\CompanyContact.cs" />
+    <Compile Include="Model2\Country.cs" />
+    <Compile Include="Model2\County.cs" />
+    <Compile Include="Model2\CustomerDetail.cs" />
+    <Compile Include="Model2\Department.cs" />
+    <Compile Include="Model2\Email.cs" />
+    <Compile Include="Model2\EmployeeDetail.cs" />
+    <Compile Include="Model2\ErrorCodes.cs" />
+    <Compile Include="Model2\Fax.cs" />
+    <Compile Include="Model2\Human.cs" />
+    <Compile Include="Model2\Message.cs" />
+    <Compile Include="Model2\ModelArc.cs" />
+    <Compile Include="Model2\Parameter.cs" />
+    <Compile Include="Model2\Phone.cs" />
+    <Compile Include="Model2\Potential.cs" />
+    <Compile Include="Model2\PotentialContact.cs" />
+    <Compile Include="Model2\Resource.cs" />
+    <Compile Include="Model2\ResourceAction.cs" />
+    <Compile Include="Model2\Role.cs" />
+    <Compile Include="Model2\UserDetail.cs" />
+    <Compile Include="Model\Action.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Address.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Architecture.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Architecture.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Architecture.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Architecture.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Architecture.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Authentication.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\City.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Company.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CompanyAuthentication.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CompanyContact.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Country.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\County.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CustomerDetail.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Department.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Email.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeDetail.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ErrorCodes.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Fax.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Human.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Message.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Parameter.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Phone.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Potential.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PotentialContact.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Resource.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ResourceAction.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Role.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserDetail.cs">
+      <DependentUpon>Architecture.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Model\Architecture.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Architecture.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Model\Architecture.edmx.diagram">
+      <DependentUpon>Architecture.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\Architecture.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Architecture.Context.cs</LastGenOutput>
+      <DependentUpon>Architecture.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\Architecture.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Architecture.edmx</DependentUpon>
+      <LastGenOutput>Architecture.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Select</Title>
+			<Shortcut>BusinessSelect</Shortcut>
+			<Description>Code snippet for Select</Description>
+			<Author>Nevzat Elalmış</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>Contract</ID>
+					<ToolTip>Expression to evaluate</ToolTip>
+					<Default>Contract</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[public GenericResponse<List<$Contract$>> Select()
+        {
+			      SqlCommand command;
+            GenericResponse<List<$Contract$>> returnObject;
+            GenericResponse<SqlDataReader> sp;
+            returnObject = this.InitializeGenericResponse<List<$Contract$>>("");          
+
+            command = this.DBLayer.GetDBCommand(SQLDBHelper.Databases.NORTHWND, "sel_Employee");
+
+            sp = this.DBLayer.ExecuteReader(command);
+            if (!sp.Success)
+            {
+                returnObject.Results.AddRange(sp.Results);
+                return returnObject;
+            }            
+
+            #region Fill from SqlDataReader to List
+            
+            List<$Contract$> listOfDataContract = new List<$Contract$>();
+            $Contract$ dataContract = null;
+
+            SqlDataReader reader = sp.Value;
+
+            while (reader.Read())
+            {
+                dataContract = new $Contract$();
+                dataContract.address = SQLDBHelper.GetStringValue(reader["address"]);
+
+                listOfDataContract.Add(dataContract);
+
+            }
+
+            reader.Close();
+            //Return 
+
+            returnObject.Value = listOfDataContract;
+
+            #endregion
+            
+            return returnObject;
+	    }
+	$end$]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

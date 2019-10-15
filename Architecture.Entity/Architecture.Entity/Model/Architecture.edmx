@@ -1,0 +1,1952 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ARCHITECTUREModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CompanyContact">
+          <Key>
+            <PropertyRef Name="CompanyContactId" />
+          </Key>
+          <Property Name="CompanyContactId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ContactTitle" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="AddressId" Type="bigint" />
+          <Property Name="Address2Id" Type="bigint" />
+          <Property Name="EmailId" Type="bigint" />
+          <Property Name="PhoneId" Type="bigint" />
+          <Property Name="FaxId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountyId" />
+            <PropertyRef Name="CountyCode" />
+          </Key>
+          <Property Name="CountyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountyCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="County">
+          <Key>
+            <PropertyRef Name="CountyId" />
+          </Key>
+          <Property Name="CountyId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CityId" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="EmailId" />
+          </Key>
+          <Property Name="EmailId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email2" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Fax">
+          <Key>
+            <PropertyRef Name="FaxId" />
+          </Key>
+          <Property Name="FaxId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="24" Nullable="false" />
+          <Property Name="Fax2" Type="nvarchar" MaxLength="24" />
+        </EntityType>
+        <EntityType Name="Phone">
+          <Key>
+            <PropertyRef Name="PhoneId" />
+          </Key>
+          <Property Name="PhoneId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="24" Nullable="false" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="24" />
+        </EntityType>
+        <EntityType Name="PotentialContact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PotentialId" Type="bigint" Nullable="false" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ContactTitle" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="AddressId" Type="bigint" />
+          <Property Name="Address2Id" Type="bigint" />
+          <Property Name="EmailId" Type="bigint" />
+          <Property Name="PhoneId" Type="bigint" />
+          <Property Name="FaxId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Name="ActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommandName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Icon" Type="nvarchar" MaxLength="50" />
+          <Property Name="ActionType" Type="tinyint" Nullable="false" />
+          <Property Name="SortId" Type="tinyint" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Authentication">
+          <Key>
+            <PropertyRef Name="AuthenticationId" />
+          </Key>
+          <Property Name="AuthenticationId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PotentialId" Type="bigint" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CompanyFullName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CompanyIcon" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="State" Type="tinyint" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="10" />
+          <Property Name="HostName" Type="varchar" MaxLength="20" />
+          <Property Name="SystemDate" Type="datetime" />
+          <Property Name="UpdateUserName" Type="varchar" MaxLength="10" />
+          <Property Name="UpdateSystemDate" Type="datetime" />
+          <Property Name="HostIp" Type="varchar" MaxLength="15" />
+          <Property Name="OperationKey" Type="nvarchar" MaxLength="28" />
+        </EntityType>
+        <EntityType Name="CompanyAuthentication">
+          <Key>
+            <PropertyRef Name="CompanyAuthenticationId" />
+          </Key>
+          <Property Name="CompanyAuthenticationId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerDetail">
+          <Key>
+            <PropertyRef Name="CustomerDetailId" />
+          </Key>
+          <Property Name="CustomerDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PotentialId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="ManagerPotentialId" Type="bigint" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="10" />
+          <Property Name="HostName" Type="varchar" MaxLength="20" />
+          <Property Name="SystemDate" Type="datetime" />
+          <Property Name="UpdateUserName" Type="varchar" MaxLength="10" />
+          <Property Name="UpdateSystemDate" Type="datetime" />
+          <Property Name="HostIp" Type="varchar" MaxLength="15" />
+          <Property Name="OperationKey" Type="nvarchar" MaxLength="28" />
+        </EntityType>
+        <EntityType Name="EmployeeDetail">
+          <Key>
+            <PropertyRef Name="EmployeeDetailId" />
+            <PropertyRef Name="PotentialId" />
+          </Key>
+          <Property Name="EmployeeDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PotentialId" Type="bigint" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="Salary" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SuperPotentialId" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Status" Type="tinyint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ARCHITECTURE.COR.ErrorCodes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ErrorCodes">
+          <Key>
+            <PropertyRef Name="ErrorCode" />
+            <PropertyRef Name="Severity" />
+          </Key>
+          <Property Name="ErrorCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrorDescription" Type="varchar" MaxLength="500" />
+          <Property Name="Severity" Type="tinyint" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="10" />
+          <Property Name="HostName" Type="varchar" MaxLength="20" />
+          <Property Name="SystemDate" Type="datetime" />
+          <Property Name="UpdateUserName" Type="datetime" />
+          <Property Name="UpdateSystemDate" Type="datetime" />
+          <Property Name="HosIp" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Human">
+          <Key>
+            <PropertyRef Name="HumanId" />
+          </Key>
+          <Property Name="HumanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ssn" Type="char" MaxLength="11" />
+          <Property Name="Sex" Type="char" MaxLength="1" />
+          <Property Name="Birthday" Type="date" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="MessageCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PropertyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MessageText" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="LanguageId" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Parameter">
+          <Key>
+            <PropertyRef Name="ParamId" />
+          </Key>
+          <Property Name="ParamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="ParamType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParamCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParamDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParamValue" Type="int" />
+          <Property Name="ParamValue2" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParamValue3" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParamValue4" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParamValue5" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParamValue6" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParamValue7" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="varchar" MaxLength="10" />
+          <Property Name="HostName" Type="varchar" MaxLength="20" />
+          <Property Name="SystemDate" Type="datetime" />
+          <Property Name="UpdateUserName" Type="varchar" MaxLength="10" />
+          <Property Name="UpdateSystemDate" Type="datetime" />
+          <Property Name="HostIp" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Potential">
+          <Key>
+            <PropertyRef Name="PotentialId" />
+          </Key>
+          <Property Name="PotentialId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ssn" Type="char" MaxLength="11" />
+          <Property Name="Sex" Type="char" MaxLength="1" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="PotentialType" Type="tinyint" Nullable="false" />
+          <Property Name="PersonType" Type="tinyint" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="10" />
+          <Property Name="HostName" Type="varchar" MaxLength="20" />
+          <Property Name="SystemDate" Type="datetime" />
+          <Property Name="UpdateUserName" Type="varchar" MaxLength="10" />
+          <Property Name="UpdateSystemDate" Type="datetime" />
+          <Property Name="HostIp" Type="varchar" MaxLength="15" />
+          <Property Name="OperationKey" Type="nvarchar" MaxLength="28" />
+        </EntityType>
+        <EntityType Name="Resource">
+          <Key>
+            <PropertyRef Name="ResourceId" />
+          </Key>
+          <Property Name="ResourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="Code" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AssemblyName" Type="nvarchar" MaxLength="250" />
+          <Property Name="ControllerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ViewName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Icon" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModuleId" Type="int" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="MenuType" Type="tinyint" />
+          <Property Name="SortId" Type="tinyint" />
+          <Property Name="ViewType" Type="tinyint" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="UserName" Type="varchar" MaxLength="10" />
+          <Property Name="HostName" Type="varchar" MaxLength="20" />
+          <Property Name="SystemDate" Type="datetime" />
+          <Property Name="UpdateUserName" Type="varchar" MaxLength="10" />
+          <Property Name="UpdateSystemDate" Type="datetime" />
+          <Property Name="OperationKey" Type="nvarchar" MaxLength="28" />
+        </EntityType>
+        <EntityType Name="ResourceAction">
+          <Key>
+            <PropertyRef Name="ResourceActionId" />
+          </Key>
+          <Property Name="ResourceActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResourceId" Type="int" Nullable="false" />
+          <Property Name="ActionId" Type="int" />
+          <Property Name="CommandName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Icon" Type="nvarchar" MaxLength="100" />
+          <Property Name="ActionType" Type="tinyint" />
+          <Property Name="SortId" Type="tinyint" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="PotentialId" />
+          </Key>
+          <Property Name="PotentialId" Type="bigint" Nullable="false" />
+          <Property Name="RoleId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'ARCHITECTURE.COR.TableDetail' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TableDetail">
+          <Property Name="UserName" Type="varchar" MaxLength="10" />
+          <Property Name="HostName" Type="varchar" MaxLength="20" />
+          <Property Name="SystemDate" Type="datetime" />
+          <Property Name="UpdateUserName" Type="varchar" MaxLength="10" />
+          <Property Name="UpdateHostName" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateSystemDate" Type="datetime" />
+          <Property Name="HostIp" Type="varchar" MaxLength="15" />
+          <Property Name="OperationKey" Type="nvarchar" MaxLength="28" />
+        </EntityType>-->
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="UserDetailId" />
+          </Key>
+          <Property Name="UserDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PotentialId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Authentication_Potential">
+          <End Role="Potential" Type="Self.Potential" Multiplicity="1" />
+          <End Role="Authentication" Type="Self.Authentication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Potential">
+              <PropertyRef Name="PotentialId" />
+            </Principal>
+            <Dependent Role="Authentication">
+              <PropertyRef Name="PotentialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyAuthentication_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyAuthentication" Type="Self.CompanyAuthentication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="CompanyAuthentication">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyContact_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="CompanyContact">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyContact_Address1">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="CompanyContact">
+              <PropertyRef Name="Address2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyContact_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="CompanyContact">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyContact_Email">
+          <End Role="Email" Type="Self.Email" Multiplicity="0..1" />
+          <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="EmailId" />
+            </Principal>
+            <Dependent Role="CompanyContact">
+              <PropertyRef Name="EmailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyContact_Fax">
+          <End Role="Fax" Type="Self.Fax" Multiplicity="0..1" />
+          <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fax">
+              <PropertyRef Name="FaxId" />
+            </Principal>
+            <Dependent Role="CompanyContact">
+              <PropertyRef Name="FaxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyContact_Phone">
+          <End Role="Phone" Type="Self.Phone" Multiplicity="0..1" />
+          <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phone">
+              <PropertyRef Name="PhoneId" />
+            </Principal>
+            <Dependent Role="CompanyContact">
+              <PropertyRef Name="PhoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_County_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="County" Type="Self.County" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="County">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerDetail_Potential">
+          <End Role="Potential" Type="Self.Potential" Multiplicity="1" />
+          <End Role="CustomerDetail" Type="Self.CustomerDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Potential">
+              <PropertyRef Name="PotentialId" />
+            </Principal>
+            <Dependent Role="CustomerDetail">
+              <PropertyRef Name="PotentialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="EmployeeDetail" Type="Self.EmployeeDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="EmployeeDetail">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parameter_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Parameter" Type="Self.Parameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Parameter">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Potential_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Potential" Type="Self.Potential" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Potential">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PotentialContact_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="PotentialContact" Type="Self.PotentialContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="PotentialContact">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PotentialContact_Address1">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="PotentialContact" Type="Self.PotentialContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="PotentialContact">
+              <PropertyRef Name="Address2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PotentialContact_Email">
+          <End Role="Email" Type="Self.Email" Multiplicity="0..1" />
+          <End Role="PotentialContact" Type="Self.PotentialContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="EmailId" />
+            </Principal>
+            <Dependent Role="PotentialContact">
+              <PropertyRef Name="EmailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PotentialContact_Fax">
+          <End Role="Fax" Type="Self.Fax" Multiplicity="0..1" />
+          <End Role="PotentialContact" Type="Self.PotentialContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fax">
+              <PropertyRef Name="FaxId" />
+            </Principal>
+            <Dependent Role="PotentialContact">
+              <PropertyRef Name="FaxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PotentialContact_Phone">
+          <End Role="Phone" Type="Self.Phone" Multiplicity="0..1" />
+          <End Role="PotentialContact" Type="Self.PotentialContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phone">
+              <PropertyRef Name="PhoneId" />
+            </Principal>
+            <Dependent Role="PotentialContact">
+              <PropertyRef Name="PhoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PotentialContact_Potential">
+          <End Role="Potential" Type="Self.Potential" Multiplicity="1" />
+          <End Role="PotentialContact" Type="Self.PotentialContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Potential">
+              <PropertyRef Name="PotentialId" />
+            </Principal>
+            <Dependent Role="PotentialContact">
+              <PropertyRef Name="PotentialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resource_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Resource" Type="Self.Resource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Resource">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResourceAction_Action">
+          <End Role="Action" Type="Self.Action" Multiplicity="0..1" />
+          <End Role="ResourceAction" Type="Self.ResourceAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="ActionId" />
+            </Principal>
+            <Dependent Role="ResourceAction">
+              <PropertyRef Name="ActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResourceAction_Resource">
+          <End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+          <End Role="ResourceAction" Type="Self.ResourceAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="ResourceId" />
+            </Principal>
+            <Dependent Role="ResourceAction">
+              <PropertyRef Name="ResourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_Potential">
+          <End Role="Potential" Type="Self.Potential" Multiplicity="1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Potential">
+              <PropertyRef Name="PotentialId" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="PotentialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetail_Potential">
+          <End Role="Potential" Type="Self.Potential" Multiplicity="1" />
+          <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Potential">
+              <PropertyRef Name="PotentialId" />
+            </Principal>
+            <Dependent Role="UserDetail">
+              <PropertyRef Name="PotentialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ARCHITECTUREModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="CNT" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="CNT" store:Type="Tables" />
+          <EntitySet Name="CompanyContact" EntityType="Self.CompanyContact" Schema="CNT" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="CNT" store:Type="Tables" />
+          <EntitySet Name="County" EntityType="Self.County" Schema="CNT" store:Type="Tables" />
+          <EntitySet Name="Email" EntityType="Self.Email" Schema="CNT" store:Type="Tables" />
+          <EntitySet Name="Fax" EntityType="Self.Fax" Schema="CNT" store:Type="Tables" />
+          <EntitySet Name="Phone" EntityType="Self.Phone" Schema="CNT" store:Type="Tables" />
+          <EntitySet Name="PotentialContact" EntityType="Self.PotentialContact" Schema="CNT" store:Type="Tables" />
+          <EntitySet Name="Action" EntityType="Self.Action" Schema="COR" store:Type="Tables" />
+          <EntitySet Name="Authentication" EntityType="Self.Authentication" Schema="COR" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="COR" store:Type="Tables" />
+          <EntitySet Name="CompanyAuthentication" EntityType="Self.CompanyAuthentication" Schema="COR" store:Type="Tables" />
+          <EntitySet Name="CustomerDetail" EntityType="Self.CustomerDetail" Schema="COR" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="COR" store:Type="Tables" />
+          <EntitySet Name="EmployeeDetail" EntityType="Self.EmployeeDetail" Schema="COR" store:Type="Tables" />
+          <EntitySet Name="Human" EntityType="Self.Human" Schema="COR" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="COR" store:Type="Tables" />
+          <EntitySet Name="Parameter" EntityType="Self.Parameter" Schema="COR" store:Type="Tables" />
+          <EntitySet Name="Potential" EntityType="Self.Potential" Schema="COR" store:Type="Tables" />
+          <EntitySet Name="Resource" EntityType="Self.Resource" Schema="COR" store:Type="Tables" />
+          <EntitySet Name="ResourceAction" EntityType="Self.ResourceAction" Schema="COR" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="COR" store:Type="Tables" />
+          <EntitySet Name="UserDetail" EntityType="Self.UserDetail" Schema="COR" store:Type="Tables" />
+          <EntitySet Name="ErrorCodes" EntityType="Self.ErrorCodes" store:Type="Tables" store:Schema="COR">
+            <DefiningQuery>SELECT 
+    [ErrorCodes].[ErrorCode] AS [ErrorCode], 
+    [ErrorCodes].[ErrorDescription] AS [ErrorDescription], 
+    [ErrorCodes].[Severity] AS [Severity], 
+    [ErrorCodes].[UserName] AS [UserName], 
+    [ErrorCodes].[HostName] AS [HostName], 
+    [ErrorCodes].[SystemDate] AS [SystemDate], 
+    [ErrorCodes].[UpdateUserName] AS [UpdateUserName], 
+    [ErrorCodes].[UpdateSystemDate] AS [UpdateSystemDate], 
+    [ErrorCodes].[HosIp] AS [HosIp]
+    FROM [COR].[ErrorCodes] AS [ErrorCodes]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Authentication_Potential" Association="Self.FK_Authentication_Potential">
+            <End Role="Potential" EntitySet="Potential" />
+            <End Role="Authentication" EntitySet="Authentication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyAuthentication_Company" Association="Self.FK_CompanyAuthentication_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CompanyAuthentication" EntitySet="CompanyAuthentication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyContact_Address" Association="Self.FK_CompanyContact_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="CompanyContact" EntitySet="CompanyContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyContact_Address1" Association="Self.FK_CompanyContact_Address1">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="CompanyContact" EntitySet="CompanyContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyContact_Company" Association="Self.FK_CompanyContact_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CompanyContact" EntitySet="CompanyContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyContact_Email" Association="Self.FK_CompanyContact_Email">
+            <End Role="Email" EntitySet="Email" />
+            <End Role="CompanyContact" EntitySet="CompanyContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyContact_Fax" Association="Self.FK_CompanyContact_Fax">
+            <End Role="Fax" EntitySet="Fax" />
+            <End Role="CompanyContact" EntitySet="CompanyContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyContact_Phone" Association="Self.FK_CompanyContact_Phone">
+            <End Role="Phone" EntitySet="Phone" />
+            <End Role="CompanyContact" EntitySet="CompanyContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_County_City" Association="Self.FK_County_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="County" EntitySet="County" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerDetail_Potential" Association="Self.FK_CustomerDetail_Potential">
+            <End Role="Potential" EntitySet="Potential" />
+            <End Role="CustomerDetail" EntitySet="CustomerDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Company" Association="Self.FK_Department_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="EmployeeDetail" EntitySet="EmployeeDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Company" Association="Self.FK_Message_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parameter_Company" Association="Self.FK_Parameter_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Parameter" EntitySet="Parameter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Potential_Company" Association="Self.FK_Potential_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Potential" EntitySet="Potential" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PotentialContact_Address" Association="Self.FK_PotentialContact_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="PotentialContact" EntitySet="PotentialContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PotentialContact_Address1" Association="Self.FK_PotentialContact_Address1">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="PotentialContact" EntitySet="PotentialContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PotentialContact_Email" Association="Self.FK_PotentialContact_Email">
+            <End Role="Email" EntitySet="Email" />
+            <End Role="PotentialContact" EntitySet="PotentialContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PotentialContact_Fax" Association="Self.FK_PotentialContact_Fax">
+            <End Role="Fax" EntitySet="Fax" />
+            <End Role="PotentialContact" EntitySet="PotentialContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PotentialContact_Phone" Association="Self.FK_PotentialContact_Phone">
+            <End Role="Phone" EntitySet="Phone" />
+            <End Role="PotentialContact" EntitySet="PotentialContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PotentialContact_Potential" Association="Self.FK_PotentialContact_Potential">
+            <End Role="Potential" EntitySet="Potential" />
+            <End Role="PotentialContact" EntitySet="PotentialContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resource_Company" Association="Self.FK_Resource_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Resource" EntitySet="Resource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResourceAction_Action" Association="Self.FK_ResourceAction_Action">
+            <End Role="Action" EntitySet="Action" />
+            <End Role="ResourceAction" EntitySet="ResourceAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResourceAction_Resource" Association="Self.FK_ResourceAction_Resource">
+            <End Role="Resource" EntitySet="Resource" />
+            <End Role="ResourceAction" EntitySet="ResourceAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_Potential" Association="Self.FK_Role_Potential">
+            <End Role="Potential" EntitySet="Potential" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetail_Potential" Association="Self.FK_UserDetail_Potential">
+            <End Role="Potential" EntitySet="Potential" />
+            <End Role="UserDetail" EntitySet="UserDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ARCHITECTUREModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompanyContact" Relationship="Self.FK_CompanyContact_Address" FromRole="Address" ToRole="CompanyContact" />
+          <NavigationProperty Name="CompanyContact1" Relationship="Self.FK_CompanyContact_Address1" FromRole="Address" ToRole="CompanyContact" />
+          <NavigationProperty Name="PotentialContact" Relationship="Self.FK_PotentialContact_Address" FromRole="Address" ToRole="PotentialContact" />
+          <NavigationProperty Name="PotentialContact1" Relationship="Self.FK_PotentialContact_Address1" FromRole="Address" ToRole="PotentialContact" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="County" Relationship="Self.FK_County_City" FromRole="City" ToRole="County" />
+        </EntityType>
+        <EntityType Name="CompanyContact">
+          <Key>
+            <PropertyRef Name="CompanyContactId" />
+          </Key>
+          <Property Name="CompanyContactId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="ContactName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactTitle" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddressId" Type="Int64" />
+          <Property Name="Address2Id" Type="Int64" />
+          <Property Name="EmailId" Type="Int64" />
+          <Property Name="PhoneId" Type="Int64" />
+          <Property Name="FaxId" Type="Int64" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_CompanyContact_Address" FromRole="CompanyContact" ToRole="Address" />
+          <NavigationProperty Name="Address1" Relationship="Self.FK_CompanyContact_Address1" FromRole="CompanyContact" ToRole="Address" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_CompanyContact_Company" FromRole="CompanyContact" ToRole="Company" />
+          <NavigationProperty Name="Email" Relationship="Self.FK_CompanyContact_Email" FromRole="CompanyContact" ToRole="Email" />
+          <NavigationProperty Name="Fax" Relationship="Self.FK_CompanyContact_Fax" FromRole="CompanyContact" ToRole="Fax" />
+          <NavigationProperty Name="Phone" Relationship="Self.FK_CompanyContact_Phone" FromRole="CompanyContact" ToRole="Phone" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountyId" />
+            <PropertyRef Name="CountyCode" />
+          </Key>
+          <Property Name="CountyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountyCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="County">
+          <Key>
+            <PropertyRef Name="CountyId" />
+          </Key>
+          <Property Name="CountyId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="Int16" />
+          <NavigationProperty Name="City" Relationship="Self.FK_County_City" FromRole="County" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="EmailId" />
+          </Key>
+          <Property Name="EmailId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompanyContact" Relationship="Self.FK_CompanyContact_Email" FromRole="Email" ToRole="CompanyContact" />
+          <NavigationProperty Name="PotentialContact" Relationship="Self.FK_PotentialContact_Email" FromRole="Email" ToRole="PotentialContact" />
+        </EntityType>
+        <EntityType Name="Fax">
+          <Key>
+            <PropertyRef Name="FaxId" />
+          </Key>
+          <Property Name="FaxId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fax1" Type="String" MaxLength="24" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fax2" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompanyContact" Relationship="Self.FK_CompanyContact_Fax" FromRole="Fax" ToRole="CompanyContact" />
+          <NavigationProperty Name="PotentialContact" Relationship="Self.FK_PotentialContact_Fax" FromRole="Fax" ToRole="PotentialContact" />
+        </EntityType>
+        <EntityType Name="Phone">
+          <Key>
+            <PropertyRef Name="PhoneId" />
+          </Key>
+          <Property Name="PhoneId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Phone1" Type="String" MaxLength="24" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone2" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompanyContact" Relationship="Self.FK_CompanyContact_Phone" FromRole="Phone" ToRole="CompanyContact" />
+          <NavigationProperty Name="PotentialContact" Relationship="Self.FK_PotentialContact_Phone" FromRole="Phone" ToRole="PotentialContact" />
+        </EntityType>
+        <EntityType Name="PotentialContact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PotentialId" Type="Int64" Nullable="false" />
+          <Property Name="ContactName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactTitle" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddressId" Type="Int64" />
+          <Property Name="Address2Id" Type="Int64" />
+          <Property Name="EmailId" Type="Int64" />
+          <Property Name="PhoneId" Type="Int64" />
+          <Property Name="FaxId" Type="Int64" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_PotentialContact_Address" FromRole="PotentialContact" ToRole="Address" />
+          <NavigationProperty Name="Address1" Relationship="Self.FK_PotentialContact_Address1" FromRole="PotentialContact" ToRole="Address" />
+          <NavigationProperty Name="Email" Relationship="Self.FK_PotentialContact_Email" FromRole="PotentialContact" ToRole="Email" />
+          <NavigationProperty Name="Fax" Relationship="Self.FK_PotentialContact_Fax" FromRole="PotentialContact" ToRole="Fax" />
+          <NavigationProperty Name="Phone" Relationship="Self.FK_PotentialContact_Phone" FromRole="PotentialContact" ToRole="Phone" />
+          <NavigationProperty Name="Potential" Relationship="Self.FK_PotentialContact_Potential" FromRole="PotentialContact" ToRole="Potential" />
+        </EntityType>
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Name="ActionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActionType" Type="Byte" Nullable="false" />
+          <Property Name="SortId" Type="Byte" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ResourceAction" Relationship="Self.FK_ResourceAction_Action" FromRole="Action" ToRole="ResourceAction" />
+        </EntityType>
+        <EntityType Name="Authentication">
+          <Key>
+            <PropertyRef Name="AuthenticationId" />
+          </Key>
+          <Property Name="AuthenticationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PotentialId" Type="Int64" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Potential" Relationship="Self.FK_Authentication_Potential" FromRole="Authentication" ToRole="Potential" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyFullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyIcon" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="Byte" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HostName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SystemDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateSystemDate" Type="DateTime" Precision="3" />
+          <Property Name="HostIp" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="OperationKey" Type="String" MaxLength="28" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompanyContact" Relationship="Self.FK_CompanyContact_Company" FromRole="Company" ToRole="CompanyContact" />
+          <NavigationProperty Name="CompanyAuthentication" Relationship="Self.FK_CompanyAuthentication_Company" FromRole="Company" ToRole="CompanyAuthentication" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_Department_Company" FromRole="Company" ToRole="Department" />
+          <NavigationProperty Name="Message" Relationship="Self.FK_Message_Company" FromRole="Company" ToRole="Message" />
+          <NavigationProperty Name="Parameter" Relationship="Self.FK_Parameter_Company" FromRole="Company" ToRole="Parameter" />
+          <NavigationProperty Name="Potential" Relationship="Self.FK_Potential_Company" FromRole="Company" ToRole="Potential" />
+          <NavigationProperty Name="Resource" Relationship="Self.FK_Resource_Company" FromRole="Company" ToRole="Resource" />
+        </EntityType>
+        <EntityType Name="CompanyAuthentication">
+          <Key>
+            <PropertyRef Name="CompanyAuthenticationId" />
+          </Key>
+          <Property Name="CompanyAuthenticationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_CompanyAuthentication_Company" FromRole="CompanyAuthentication" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="CustomerDetail">
+          <Key>
+            <PropertyRef Name="CustomerDetailId" />
+          </Key>
+          <Property Name="CustomerDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PotentialId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Potential" Relationship="Self.FK_CustomerDetail_Potential" FromRole="CustomerDetail" ToRole="Potential" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="ManagerPotentialId" Type="Int64" Nullable="false" />
+          <Property Name="DepartmentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HostName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SystemDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateSystemDate" Type="DateTime" Precision="3" />
+          <Property Name="HostIp" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="OperationKey" Type="String" MaxLength="28" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Department_Company" FromRole="Department" ToRole="Company" />
+          <NavigationProperty Name="EmployeeDetail" Relationship="Self.FK_Employee_Department" FromRole="Department" ToRole="EmployeeDetail" />
+        </EntityType>
+        <EntityType Name="EmployeeDetail">
+          <Key>
+            <PropertyRef Name="EmployeeDetailId" />
+            <PropertyRef Name="PotentialId" />
+          </Key>
+          <Property Name="EmployeeDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PotentialId" Type="Int64" Nullable="false" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="Salary" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SuperPotentialId" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Byte" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_Employee_Department" FromRole="EmployeeDetail" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="Human">
+          <Key>
+            <PropertyRef Name="HumanId" />
+          </Key>
+          <Property Name="HumanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ssn" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Sex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="MessageCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PropertyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MessageText" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LanguageId" Type="Byte" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Message_Company" FromRole="Message" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="Parameter">
+          <Key>
+            <PropertyRef Name="ParamId" />
+          </Key>
+          <Property Name="ParamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="ParamType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParamCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParamDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParamValue" Type="Int32" />
+          <Property Name="ParamValue2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParamValue3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParamValue4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParamValue5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParamValue6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParamValue7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HostName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SystemDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateSystemDate" Type="DateTime" Precision="3" />
+          <Property Name="HostIp" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Parameter_Company" FromRole="Parameter" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="Potential">
+          <Key>
+            <PropertyRef Name="PotentialId" />
+          </Key>
+          <Property Name="PotentialId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ssn" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Sex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="PotentialType" Type="Byte" Nullable="false" />
+          <Property Name="PersonType" Type="Byte" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HostName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SystemDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateSystemDate" Type="DateTime" Precision="3" />
+          <Property Name="HostIp" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="OperationKey" Type="String" MaxLength="28" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PotentialContact" Relationship="Self.FK_PotentialContact_Potential" FromRole="Potential" ToRole="PotentialContact" />
+          <NavigationProperty Name="Authentication" Relationship="Self.FK_Authentication_Potential" FromRole="Potential" ToRole="Authentication" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Potential_Company" FromRole="Potential" ToRole="Company" />
+          <NavigationProperty Name="CustomerDetail" Relationship="Self.FK_CustomerDetail_Potential" FromRole="Potential" ToRole="CustomerDetail" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Role_Potential" FromRole="Potential" ToRole="Role" />
+          <NavigationProperty Name="UserDetail" Relationship="Self.FK_UserDetail_Potential" FromRole="Potential" ToRole="UserDetail" />
+        </EntityType>
+        <EntityType Name="Resource">
+          <Key>
+            <PropertyRef Name="ResourceId" />
+          </Key>
+          <Property Name="ResourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AssemblyName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ControllerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ViewName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModuleId" Type="Int32" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="MenuType" Type="Byte" />
+          <Property Name="SortId" Type="Byte" />
+          <Property Name="ViewType" Type="Byte" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HostName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SystemDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateSystemDate" Type="DateTime" Precision="3" />
+          <Property Name="OperationKey" Type="String" MaxLength="28" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Resource_Company" FromRole="Resource" ToRole="Company" />
+          <NavigationProperty Name="ResourceAction" Relationship="Self.FK_ResourceAction_Resource" FromRole="Resource" ToRole="ResourceAction" />
+        </EntityType>
+        <EntityType Name="ResourceAction">
+          <Key>
+            <PropertyRef Name="ResourceActionId" />
+          </Key>
+          <Property Name="ResourceActionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResourceId" Type="Int32" Nullable="false" />
+          <Property Name="ActionId" Type="Int32" />
+          <Property Name="CommandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Icon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ActionType" Type="Byte" />
+          <Property Name="SortId" Type="Byte" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Action" Relationship="Self.FK_ResourceAction_Action" FromRole="ResourceAction" ToRole="Action" />
+          <NavigationProperty Name="Resource" Relationship="Self.FK_ResourceAction_Resource" FromRole="ResourceAction" ToRole="Resource" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="PotentialId" />
+          </Key>
+          <Property Name="PotentialId" Type="Int64" Nullable="false" />
+          <Property Name="RoleId" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Potential" Relationship="Self.FK_Role_Potential" FromRole="Role" ToRole="Potential" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="UserDetailId" />
+          </Key>
+          <Property Name="UserDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PotentialId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Potential" Relationship="Self.FK_UserDetail_Potential" FromRole="UserDetail" ToRole="Potential" />
+        </EntityType>
+        <EntityType Name="ErrorCodes">
+          <Key>
+            <PropertyRef Name="ErrorCode" />
+            <PropertyRef Name="Severity" />
+          </Key>
+          <Property Name="ErrorCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Severity" Type="Byte" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HostName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SystemDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserName" Type="DateTime" Precision="3" />
+          <Property Name="UpdateSystemDate" Type="DateTime" Precision="3" />
+          <Property Name="HosIp" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_CompanyContact_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="CompanyContact">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyContact_Address1">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="CompanyContact">
+              <PropertyRef Name="Address2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PotentialContact_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="PotentialContact" Type="Self.PotentialContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="PotentialContact">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PotentialContact_Address1">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="PotentialContact" Type="Self.PotentialContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="PotentialContact">
+              <PropertyRef Name="Address2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_County_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="County" Type="Self.County" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="County">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyContact_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="CompanyContact">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyContact_Email">
+          <End Role="Email" Type="Self.Email" Multiplicity="0..1" />
+          <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="EmailId" />
+            </Principal>
+            <Dependent Role="CompanyContact">
+              <PropertyRef Name="EmailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyContact_Fax">
+          <End Role="Fax" Type="Self.Fax" Multiplicity="0..1" />
+          <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fax">
+              <PropertyRef Name="FaxId" />
+            </Principal>
+            <Dependent Role="CompanyContact">
+              <PropertyRef Name="FaxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyContact_Phone">
+          <End Role="Phone" Type="Self.Phone" Multiplicity="0..1" />
+          <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phone">
+              <PropertyRef Name="PhoneId" />
+            </Principal>
+            <Dependent Role="CompanyContact">
+              <PropertyRef Name="PhoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PotentialContact_Email">
+          <End Role="Email" Type="Self.Email" Multiplicity="0..1" />
+          <End Role="PotentialContact" Type="Self.PotentialContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="EmailId" />
+            </Principal>
+            <Dependent Role="PotentialContact">
+              <PropertyRef Name="EmailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PotentialContact_Fax">
+          <End Role="Fax" Type="Self.Fax" Multiplicity="0..1" />
+          <End Role="PotentialContact" Type="Self.PotentialContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fax">
+              <PropertyRef Name="FaxId" />
+            </Principal>
+            <Dependent Role="PotentialContact">
+              <PropertyRef Name="FaxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PotentialContact_Phone">
+          <End Role="Phone" Type="Self.Phone" Multiplicity="0..1" />
+          <End Role="PotentialContact" Type="Self.PotentialContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phone">
+              <PropertyRef Name="PhoneId" />
+            </Principal>
+            <Dependent Role="PotentialContact">
+              <PropertyRef Name="PhoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PotentialContact_Potential">
+          <End Role="Potential" Type="Self.Potential" Multiplicity="1" />
+          <End Role="PotentialContact" Type="Self.PotentialContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Potential">
+              <PropertyRef Name="PotentialId" />
+            </Principal>
+            <Dependent Role="PotentialContact">
+              <PropertyRef Name="PotentialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResourceAction_Action">
+          <End Role="Action" Type="Self.Action" Multiplicity="0..1" />
+          <End Role="ResourceAction" Type="Self.ResourceAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="ActionId" />
+            </Principal>
+            <Dependent Role="ResourceAction">
+              <PropertyRef Name="ActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Authentication_Potential">
+          <End Role="Potential" Type="Self.Potential" Multiplicity="1" />
+          <End Role="Authentication" Type="Self.Authentication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Potential">
+              <PropertyRef Name="PotentialId" />
+            </Principal>
+            <Dependent Role="Authentication">
+              <PropertyRef Name="PotentialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyAuthentication_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyAuthentication" Type="Self.CompanyAuthentication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="CompanyAuthentication">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parameter_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Parameter" Type="Self.Parameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Parameter">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Potential_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Potential" Type="Self.Potential" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Potential">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resource_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Resource" Type="Self.Resource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Resource">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerDetail_Potential">
+          <End Role="Potential" Type="Self.Potential" Multiplicity="1" />
+          <End Role="CustomerDetail" Type="Self.CustomerDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Potential">
+              <PropertyRef Name="PotentialId" />
+            </Principal>
+            <Dependent Role="CustomerDetail">
+              <PropertyRef Name="PotentialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="EmployeeDetail" Type="Self.EmployeeDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="EmployeeDetail">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_Potential">
+          <End Role="Potential" Type="Self.Potential" Multiplicity="1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Potential">
+              <PropertyRef Name="PotentialId" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="PotentialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetail_Potential">
+          <End Role="Potential" Type="Self.Potential" Multiplicity="1" />
+          <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Potential">
+              <PropertyRef Name="PotentialId" />
+            </Principal>
+            <Dependent Role="UserDetail">
+              <PropertyRef Name="PotentialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResourceAction_Resource">
+          <End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+          <End Role="ResourceAction" Type="Self.ResourceAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="ResourceId" />
+            </Principal>
+            <Dependent Role="ResourceAction">
+              <PropertyRef Name="ResourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ARCHITECTUREEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Address" EntityType="Self.Address" />
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="CompanyContact" EntityType="Self.CompanyContact" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="County" EntityType="Self.County" />
+          <EntitySet Name="Email" EntityType="Self.Email" />
+          <EntitySet Name="Fax" EntityType="Self.Fax" />
+          <EntitySet Name="Phone" EntityType="Self.Phone" />
+          <EntitySet Name="PotentialContact" EntityType="Self.PotentialContact" />
+          <EntitySet Name="Action" EntityType="Self.Action" />
+          <EntitySet Name="Authentication" EntityType="Self.Authentication" />
+          <EntitySet Name="Company" EntityType="Self.Company" />
+          <EntitySet Name="CompanyAuthentication" EntityType="Self.CompanyAuthentication" />
+          <EntitySet Name="CustomerDetail" EntityType="Self.CustomerDetail" />
+          <EntitySet Name="Department" EntityType="Self.Department" />
+          <EntitySet Name="EmployeeDetail" EntityType="Self.EmployeeDetail" />
+          <EntitySet Name="Human" EntityType="Self.Human" />
+          <EntitySet Name="Message" EntityType="Self.Message" />
+          <EntitySet Name="Parameter" EntityType="Self.Parameter" />
+          <EntitySet Name="Potential" EntityType="Self.Potential" />
+          <EntitySet Name="Resource" EntityType="Self.Resource" />
+          <EntitySet Name="ResourceAction" EntityType="Self.ResourceAction" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="UserDetail" EntityType="Self.UserDetail" />
+          <EntitySet Name="ErrorCodes" EntityType="Self.ErrorCodes" />
+          <AssociationSet Name="FK_CompanyContact_Address" Association="Self.FK_CompanyContact_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="CompanyContact" EntitySet="CompanyContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyContact_Address1" Association="Self.FK_CompanyContact_Address1">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="CompanyContact" EntitySet="CompanyContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PotentialContact_Address" Association="Self.FK_PotentialContact_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="PotentialContact" EntitySet="PotentialContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PotentialContact_Address1" Association="Self.FK_PotentialContact_Address1">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="PotentialContact" EntitySet="PotentialContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_County_City" Association="Self.FK_County_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="County" EntitySet="County" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyContact_Company" Association="Self.FK_CompanyContact_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CompanyContact" EntitySet="CompanyContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyContact_Email" Association="Self.FK_CompanyContact_Email">
+            <End Role="Email" EntitySet="Email" />
+            <End Role="CompanyContact" EntitySet="CompanyContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyContact_Fax" Association="Self.FK_CompanyContact_Fax">
+            <End Role="Fax" EntitySet="Fax" />
+            <End Role="CompanyContact" EntitySet="CompanyContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyContact_Phone" Association="Self.FK_CompanyContact_Phone">
+            <End Role="Phone" EntitySet="Phone" />
+            <End Role="CompanyContact" EntitySet="CompanyContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PotentialContact_Email" Association="Self.FK_PotentialContact_Email">
+            <End Role="Email" EntitySet="Email" />
+            <End Role="PotentialContact" EntitySet="PotentialContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PotentialContact_Fax" Association="Self.FK_PotentialContact_Fax">
+            <End Role="Fax" EntitySet="Fax" />
+            <End Role="PotentialContact" EntitySet="PotentialContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PotentialContact_Phone" Association="Self.FK_PotentialContact_Phone">
+            <End Role="Phone" EntitySet="Phone" />
+            <End Role="PotentialContact" EntitySet="PotentialContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PotentialContact_Potential" Association="Self.FK_PotentialContact_Potential">
+            <End Role="Potential" EntitySet="Potential" />
+            <End Role="PotentialContact" EntitySet="PotentialContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResourceAction_Action" Association="Self.FK_ResourceAction_Action">
+            <End Role="Action" EntitySet="Action" />
+            <End Role="ResourceAction" EntitySet="ResourceAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Authentication_Potential" Association="Self.FK_Authentication_Potential">
+            <End Role="Potential" EntitySet="Potential" />
+            <End Role="Authentication" EntitySet="Authentication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyAuthentication_Company" Association="Self.FK_CompanyAuthentication_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CompanyAuthentication" EntitySet="CompanyAuthentication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Company" Association="Self.FK_Department_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Company" Association="Self.FK_Message_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parameter_Company" Association="Self.FK_Parameter_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Parameter" EntitySet="Parameter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Potential_Company" Association="Self.FK_Potential_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Potential" EntitySet="Potential" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resource_Company" Association="Self.FK_Resource_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Resource" EntitySet="Resource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerDetail_Potential" Association="Self.FK_CustomerDetail_Potential">
+            <End Role="Potential" EntitySet="Potential" />
+            <End Role="CustomerDetail" EntitySet="CustomerDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="EmployeeDetail" EntitySet="EmployeeDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_Potential" Association="Self.FK_Role_Potential">
+            <End Role="Potential" EntitySet="Potential" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetail_Potential" Association="Self.FK_UserDetail_Potential">
+            <End Role="Potential" EntitySet="Potential" />
+            <End Role="UserDetail" EntitySet="UserDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResourceAction_Resource" Association="Self.FK_ResourceAction_Resource">
+            <End Role="Resource" EntitySet="Resource" />
+            <End Role="ResourceAction" EntitySet="ResourceAction" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ARCHITECTUREModelStoreContainer" CdmEntityContainer="ARCHITECTUREEntities">
+          <EntitySetMapping Name="Address">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Address1" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyContact">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.CompanyContact">
+              <MappingFragment StoreEntitySet="CompanyContact">
+                <ScalarProperty Name="CompanyContactId" ColumnName="CompanyContactId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactTitle" ColumnName="ContactTitle" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Address2Id" ColumnName="Address2Id" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="PhoneId" ColumnName="PhoneId" />
+                <ScalarProperty Name="FaxId" ColumnName="FaxId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountyId" ColumnName="CountyId" />
+                <ScalarProperty Name="CountyCode" ColumnName="CountyCode" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="County">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.County">
+              <MappingFragment StoreEntitySet="County">
+                <ScalarProperty Name="CountyId" ColumnName="CountyId" />
+                <ScalarProperty Name="CountyName" ColumnName="CountyName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Email">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.Email">
+              <MappingFragment StoreEntitySet="Email">
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Email1" ColumnName="Email" />
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fax">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.Fax">
+              <MappingFragment StoreEntitySet="Fax">
+                <ScalarProperty Name="FaxId" ColumnName="FaxId" />
+                <ScalarProperty Name="Fax1" ColumnName="Fax" />
+                <ScalarProperty Name="Fax2" ColumnName="Fax2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Phone">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.Phone">
+              <MappingFragment StoreEntitySet="Phone">
+                <ScalarProperty Name="PhoneId" ColumnName="PhoneId" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PotentialContact">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.PotentialContact">
+              <MappingFragment StoreEntitySet="PotentialContact">
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="PotentialId" ColumnName="PotentialId" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactTitle" ColumnName="ContactTitle" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Address2Id" ColumnName="Address2Id" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="PhoneId" ColumnName="PhoneId" />
+                <ScalarProperty Name="FaxId" ColumnName="FaxId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Action">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.Action">
+              <MappingFragment StoreEntitySet="Action">
+                <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+                <ScalarProperty Name="CommandName" ColumnName="CommandName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authentication">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.Authentication">
+              <MappingFragment StoreEntitySet="Authentication">
+                <ScalarProperty Name="AuthenticationId" ColumnName="AuthenticationId" />
+                <ScalarProperty Name="PotentialId" ColumnName="PotentialId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyFullName" ColumnName="CompanyFullName" />
+                <ScalarProperty Name="CompanyIcon" ColumnName="CompanyIcon" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="SystemDate" ColumnName="SystemDate" />
+                <ScalarProperty Name="UpdateUserName" ColumnName="UpdateUserName" />
+                <ScalarProperty Name="UpdateSystemDate" ColumnName="UpdateSystemDate" />
+                <ScalarProperty Name="HostIp" ColumnName="HostIp" />
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyAuthentication">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.CompanyAuthentication">
+              <MappingFragment StoreEntitySet="CompanyAuthentication">
+                <ScalarProperty Name="CompanyAuthenticationId" ColumnName="CompanyAuthenticationId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerDetail">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.CustomerDetail">
+              <MappingFragment StoreEntitySet="CustomerDetail">
+                <ScalarProperty Name="CustomerDetailId" ColumnName="CustomerDetailId" />
+                <ScalarProperty Name="PotentialId" ColumnName="PotentialId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ManagerPotentialId" ColumnName="ManagerPotentialId" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="SystemDate" ColumnName="SystemDate" />
+                <ScalarProperty Name="UpdateUserName" ColumnName="UpdateUserName" />
+                <ScalarProperty Name="UpdateSystemDate" ColumnName="UpdateSystemDate" />
+                <ScalarProperty Name="HostIp" ColumnName="HostIp" />
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeDetail">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.EmployeeDetail">
+              <MappingFragment StoreEntitySet="EmployeeDetail">
+                <ScalarProperty Name="EmployeeDetailId" ColumnName="EmployeeDetailId" />
+                <ScalarProperty Name="PotentialId" ColumnName="PotentialId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="SuperPotentialId" ColumnName="SuperPotentialId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Human">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.Human">
+              <MappingFragment StoreEntitySet="Human">
+                <ScalarProperty Name="HumanId" ColumnName="HumanId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Ssn" ColumnName="Ssn" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Message">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="MessageCode" ColumnName="MessageCode" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parameter">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.Parameter">
+              <MappingFragment StoreEntitySet="Parameter">
+                <ScalarProperty Name="ParamId" ColumnName="ParamId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ParamType" ColumnName="ParamType" />
+                <ScalarProperty Name="ParamCode" ColumnName="ParamCode" />
+                <ScalarProperty Name="ParamDescription" ColumnName="ParamDescription" />
+                <ScalarProperty Name="ParamValue" ColumnName="ParamValue" />
+                <ScalarProperty Name="ParamValue2" ColumnName="ParamValue2" />
+                <ScalarProperty Name="ParamValue3" ColumnName="ParamValue3" />
+                <ScalarProperty Name="ParamValue4" ColumnName="ParamValue4" />
+                <ScalarProperty Name="ParamValue5" ColumnName="ParamValue5" />
+                <ScalarProperty Name="ParamValue6" ColumnName="ParamValue6" />
+                <ScalarProperty Name="ParamValue7" ColumnName="ParamValue7" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="SystemDate" ColumnName="SystemDate" />
+                <ScalarProperty Name="UpdateUserName" ColumnName="UpdateUserName" />
+                <ScalarProperty Name="UpdateSystemDate" ColumnName="UpdateSystemDate" />
+                <ScalarProperty Name="HostIp" ColumnName="HostIp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Potential">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.Potential">
+              <MappingFragment StoreEntitySet="Potential">
+                <ScalarProperty Name="PotentialId" ColumnName="PotentialId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Ssn" ColumnName="Ssn" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PotentialType" ColumnName="PotentialType" />
+                <ScalarProperty Name="PersonType" ColumnName="PersonType" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="SystemDate" ColumnName="SystemDate" />
+                <ScalarProperty Name="UpdateUserName" ColumnName="UpdateUserName" />
+                <ScalarProperty Name="UpdateSystemDate" ColumnName="UpdateSystemDate" />
+                <ScalarProperty Name="HostIp" ColumnName="HostIp" />
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resource">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.Resource">
+              <MappingFragment StoreEntitySet="Resource">
+                <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="AssemblyName" ColumnName="AssemblyName" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="ViewName" ColumnName="ViewName" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="MenuType" ColumnName="MenuType" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="ViewType" ColumnName="ViewType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="SystemDate" ColumnName="SystemDate" />
+                <ScalarProperty Name="UpdateUserName" ColumnName="UpdateUserName" />
+                <ScalarProperty Name="UpdateSystemDate" ColumnName="UpdateSystemDate" />
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResourceAction">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.ResourceAction">
+              <MappingFragment StoreEntitySet="ResourceAction">
+                <ScalarProperty Name="ResourceActionId" ColumnName="ResourceActionId" />
+                <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+                <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+                <ScalarProperty Name="CommandName" ColumnName="CommandName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="PotentialId" ColumnName="PotentialId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetail">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetail">
+                <ScalarProperty Name="UserDetailId" ColumnName="UserDetailId" />
+                <ScalarProperty Name="PotentialId" ColumnName="PotentialId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorCodes">
+            <EntityTypeMapping TypeName="ARCHITECTUREModel.ErrorCodes">
+              <MappingFragment StoreEntitySet="ErrorCodes">
+                <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+                <ScalarProperty Name="ErrorDescription" ColumnName="ErrorDescription" />
+                <ScalarProperty Name="Severity" ColumnName="Severity" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="SystemDate" ColumnName="SystemDate" />
+                <ScalarProperty Name="UpdateUserName" ColumnName="UpdateUserName" />
+                <ScalarProperty Name="UpdateSystemDate" ColumnName="UpdateSystemDate" />
+                <ScalarProperty Name="HosIp" ColumnName="HosIp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

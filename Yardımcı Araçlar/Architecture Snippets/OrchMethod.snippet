@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Update</Title>
+			<Shortcut>OrchectrationMethod</Shortcut>
+			<Description>Code snippet for Ochestration</Description>
+			<Author>Nevzat Elalmış</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>ReturnType</ID>
+					<ToolTip>Expression to evaluate</ToolTip>
+					<Default>ReturnType</Default>
+				</Literal>
+				<Literal>
+					<ID>Request</ID>
+					<ToolTip>Expression</ToolTip>
+					<Default>Request</Default>
+				</Literal>
+				<Literal>
+					<ID>MethodName</ID>
+					<ToolTip>Expression </ToolTip>
+					<Default>Select</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+              <![CDATA[public GenericResponse<$ReturnType$> $MethodName$(ObjectHelper objectHelper, $Request$ request)
+        {
+            GenericResponse<$ReturnType$> returnObject = objectHelper.InitializeGenericResponse<$ReturnType$>("SelectByColumns");
+            Business.Employees bo = new Business.Employees(objectHelper.Context);
+            
+            GenericResponse<$ReturnType$> response = bo.SelectByColumns(request.Contract.FirstName);
+            if (!response.Success)
+            {
+                returnObject.Results.AddRange(response.Results);
+                return returnObject;
+            }
+            
+            returnObject.Value = response.Value;
+            return returnObject;
+        }
+	$end$]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

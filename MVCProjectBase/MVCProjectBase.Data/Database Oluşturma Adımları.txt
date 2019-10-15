@@ -1,0 +1,22 @@
+﻿1- Core Projesinde BaseEntity, ve diğer veri tabanı tabloları oluşturulur.
+2- DATA PROJESİNDE
+	a) Mapping klasörü altında tabloların maplame işlemleri yapılır. 
+	b) Context klasörü altında Projenin context işlemi yapılır. 
+3- Web Projesine ConnectionString cümlesi Web config dosyasına eklenir.
+4- Web Projesine Test Projesi hariç diğer projelerin dllleri referans eklenir. 
+
+Data Projesi seçili iken Package Manager Console "Enable-Migrations –EnableAutomaticMigrations" komutu yazılır.  Ardından "Update-Database" komutu çalıştırılır.
+
+
+
+Burada önemli olan, bir alan silindiğinde veri kaybı olacağından otomatik update çalışmayacaktır. Bunun için Migration klasörü içerisindeki configuration sınıfının constructor metoduna şu satırı eklemeliyiz:
+
+AutomaticMigrationDataLossAllowed = true;
+
+
+
+
+NOT: MVC controller lar için parametreli bir yapıcı metodu yok. Bundan dolayı controller ların yapıcı metodlarına, parametre gondermek için, bir IOC projesi kullanacağız. Öncelikler IOC projesinde ayarlamalar, daha sonra web projesinde ayarlamalar yaparak, projemizi dependency injection (DI) için uygun hale getireceğiz.
+
+
+Global.asax içerisinde Bootstrapper.Initialise(); komutu ile unity i ilkleme yapıyoruz.   
